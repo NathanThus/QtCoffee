@@ -21,14 +21,25 @@ ApplicationWindow {
         color: "black"
     }
 
-    Label
+
+    ListView
     {
-        id: labelCoffee
         anchors.top: labelMain.bottom
-        anchors.horizontalCenter: labelMain.horizontalCenter
         anchors.topMargin: 10
-        text: coffeeItem ? coffeeItem.Name : "Coffee Is Null"
-        font.pointSize: 24
-        color: "red"
-    }
-}
+        anchors.horizontalCenter: labelMain.horizontalCenter
+        width: contentWidth
+        height: 40
+
+        orientation: ListView.Horizontal
+        spacing: 12
+
+        model: coffeeManager.coffeeModel
+
+        delegate: Button {
+            text: name   // role from CoffeeModel::roleNames()
+            font.pixelSize: 18
+            onClicked: {
+                coffeeManager.makeCoffee(index)
+            }
+        }
+}   }
