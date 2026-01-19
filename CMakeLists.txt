@@ -19,11 +19,10 @@ qt_add_qml_module(appQtCoffee
         Main.qml
     SOURCES
         main.cpp
-        src/CoffeeManager.cpp
-        src/CoffeeModel.cpp
         src/CoffeeItem.h
-        src/CoffeeManager.h
-        src/CoffeeModel.h
+	src/CoffeeManager.h src/CoffeeManager.cpp
+        src/CoffeeModel.h src/CoffeeModel.cpp
+        src/BrewController.h src/BrewController.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
