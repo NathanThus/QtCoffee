@@ -54,3 +54,5 @@ compile_commands.json
 
 *_qmlcache.qrc
 .vscode
+.qmlls.ini
+vc140.pdb
