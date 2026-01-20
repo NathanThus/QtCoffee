@@ -14,7 +14,11 @@ public:
 
     enum
     {
-        NameRole = Qt::UserRole + 1
+        NameRole = Qt::UserRole + 1,
+        CoffeeAmountRole,
+        MilkAmountRole,
+        SugarAmountRole,
+        BrewTimeRole
     };
     void setCoffees(const QList<CoffeeItem> &coffees);
 

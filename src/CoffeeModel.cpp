@@ -15,15 +15,36 @@ int CoffeeModel::rowCount(const QModelIndex &parent) const
     return m_coffees.count();
 }
 
-QVariant CoffeeModel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid()) return {};
-    const CoffeeItem &coffee = m_coffees.at(index.row());
-    if (role == NameRole) return coffee.Name;
-    return {};
-}
-
 QHash<int, QByteArray> CoffeeModel::roleNames() const
 {
-    return {{NameRole, "name"}};
+    return {
+        {NameRole, "name"},
+        {CoffeeAmountRole, "coffeeAmount"},
+        {MilkAmountRole, "milkAmount"},
+        {SugarAmountRole, "sugarAmount"},
+        {BrewTimeRole, "brewTime"}
+    };
+}
+
+QVariant CoffeeModel::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid() || index.row() >= m_coffees.count())
+        return QVariant();
+
+    const CoffeeItem &coffee = m_coffees[index.row()];
+
+    switch (role) {
+    case NameRole:
+        return coffee.Name;
+    case CoffeeAmountRole:
+        return coffee.CoffeeAmount;
+    case MilkAmountRole:
+        return coffee.MilkAmount;
+    case SugarAmountRole:
+        return coffee.SugarAmount;
+    case BrewTimeRole:
+        return coffee.brewTime;
+    default:
+        return QVariant();
+    }
 }
