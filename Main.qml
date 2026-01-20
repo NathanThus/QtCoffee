@@ -7,8 +7,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("Nathan's Coffee")
 
-    Rectangle
-    {
+    Rectangle {
         width: parent.width
         height: parent.height
         color: "#777"
@@ -58,7 +57,57 @@ ApplicationWindow {
 
         onLoaded: {
             item.closeRequested.connect(hideDetails)
+            item.brewRequested.connect(function() {
+                startBrewing({
+                    name: item.coffeeName,
+                    brewTime: item.brewTime
+                })
+            })
         }
+    }
+
+    Loader {
+        id: brewingLoader
+        anchors.fill: parent
+        visible: false
+        onLoaded: {
+            item.brewingComplete.connect(showCollectPage)
+        }
+    }
+
+    Loader {
+        id: collectLoader
+        anchors.fill: parent
+        visible: false
+        onLoaded: {
+            item.collectTimeout.connect(returnToMain)
+        }
+    }
+
+    function startBrewing(coffeeData) {
+        detailsLoader.visible = false
+        brewingLoader.active = true
+        brewingLoader.setSource("BrewingPage.qml", {
+                                    "coffeeName": coffeeData.name,
+                                    "brewTime": coffeeData.brewTime
+                                })
+        brewingLoader.visible = true
+    }
+
+    function showCollectPage() {
+        var coffeeName = brewingLoader.item.coffeeName
+        brewingLoader.visible = false
+        collectLoader.setSource("CollectPage.qml", {
+                                    "coffeeName": coffeeName
+                                })
+        collectLoader.visible = true
+    }
+
+    function returnToMain() {
+        collectLoader.visible = false
+        brewingLoader.visible = false
+        detailsLoader.visible = false
+        mainPage.visible = true
     }
 
     function showCoffeeDetails(coffeeData) {

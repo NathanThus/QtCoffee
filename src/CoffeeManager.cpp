@@ -22,7 +22,6 @@ CoffeeManager::CoffeeManager(QObject *parent)
 
 void CoffeeManager::Brew(int index)
 {
-    qDebug() << "BRR";
 }
 
 QVariantList CoffeeManager::GetCoffeeList() const

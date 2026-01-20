@@ -5,6 +5,7 @@ Page {
     id:detailsPage
 
     signal closeRequested()
+    signal brewRequested()
 
     property string coffeeName: ""
     property int coffeeAmount: 0
@@ -22,11 +23,9 @@ Page {
         anchors.centerIn: parent
         spacing: 20
 
-        Rectangle
-        {
-            width: 200
-            height: 200
-            color: "red"
+        Text {
+            text: "☕"
+            font.pixelSize: 100
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -58,7 +57,7 @@ Page {
 
         Text
         {
-            text: "Brew Time: " + coffeeAmount + " seconds"
+            text: "Brew Time: " + brewTime + " seconds"
             font.pixelSize: 18
         }
 
@@ -68,7 +67,7 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked:
             {
-                console.log("BRRR")
+                brewRequested()
             }
         }
 
