@@ -87,6 +87,7 @@ ApplicationWindow {
     function startBrewing(coffeeData) {
         detailsLoader.visible = false
         brewingLoader.active = true
+        coffeeManager.brewByName(coffeeData.name)
         brewingLoader.setSource("BrewingPage.qml", {
                                     "coffeeName": coffeeData.name,
                                     "brewTime": coffeeData.brewTime
