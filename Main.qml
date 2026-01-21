@@ -39,10 +39,10 @@ ApplicationWindow {
                 onClicked: {
                     showCoffeeDetails({
                                           "name": model.name,
-                                          "coffeeAmount": model.coffeeAmount,
-                                          "milkAmount": model.milkAmount,
-                                          "sugarAmount": model.sugarAmount,
-                                          "brewTime": model.brewTime
+                                          "coffeeAmountMillilitres": model.CoffeeAmountMillilitres,
+                                          "milkAmountMillilitres": model.MilkAmountMillilitres,
+                                          "sugarAmountGrams": model.SugarAmountGrams,
+                                          "brewTimeSeconds": model.BrewTimeSeconds
                                       })
                 }
             }
@@ -60,7 +60,7 @@ ApplicationWindow {
             item.brewRequested.connect(function() {
                 startBrewing({
                     name: item.coffeeName,
-                    brewTime: item.brewTime
+                    brewTimeSeconds: item.brewTimeSeconds
                 })
             })
         }
@@ -90,7 +90,7 @@ ApplicationWindow {
         coffeeManager.brewByName(coffeeData.name)
         brewingLoader.setSource("BrewingPage.qml", {
                                     "coffeeName": coffeeData.name,
-                                    "brewTime": coffeeData.brewTime
+                                    "brewTimeSeconds": coffeeData.brewTimeSeconds
                                 })
         brewingLoader.visible = true
     }
@@ -113,12 +113,11 @@ ApplicationWindow {
 
     function showCoffeeDetails(coffeeData) {
         detailsLoader.active = true
-
         detailsLoader.item.coffeeName = coffeeData.name
-        detailsLoader.item.coffeeAmount = coffeeData.coffeeAmount
-        detailsLoader.item.milkAmount = coffeeData.milkAmount
-        detailsLoader.item.sugarAmount = coffeeData.sugarAmount
-        detailsLoader.item.brewTime = coffeeData.brewTime
+        detailsLoader.item.coffeeAmountMillilitres = coffeeData.coffeeAmountMillilitres
+        detailsLoader.item.milkAmountMillilitres = coffeeData.milkAmountMillilitres
+        detailsLoader.item.sugarAmountGrams = coffeeData.sugarAmountGrams
+        detailsLoader.item.brewTimeSeconds = coffeeData.brewTimeSeconds
 
         detailsLoader.visible = true
     }

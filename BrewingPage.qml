@@ -4,7 +4,7 @@ import QtQuick.Controls
 Page {
     id: brewingPage
 
-    property int brewTime: 0
+    property int brewTimeSeconds: 0
     property string coffeeName: ""
 
     signal brewingComplete()
@@ -26,7 +26,7 @@ Page {
 
         Text {
             id: countdown
-            text: brewTime + " seconds"
+            text: brewTimeSeconds + " seconds"
             font.pixelSize: 48
             font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
@@ -44,12 +44,12 @@ Page {
         id: brewTimer
         interval: 1000
         repeat: true
-        property int remainingTime: brewTime
+        property int remainingTime: brewTimeSeconds
 
         onTriggered: {
             remainingTime--
             countdown.text = remainingTime + " seconds"
-            progressBar.value = (brewTime - remainingTime) / brewTime
+            progressBar.value = (brewTimeSeconds - remainingTime) / brewTimeSeconds
 
             if (remainingTime <= 0) {
                 stop()
@@ -59,7 +59,7 @@ Page {
     }
 
     Component.onCompleted: {
-        brewTimer.remainingTime = brewTime
+        brewTimer.remainingTime = brewTimeSeconds
         brewTimer.start()
     }
 }

@@ -23,7 +23,7 @@ void AddSugar(int quantity)
 
 void BrewController::Brew(const CoffeeItem coffee)
 {
-    PrepareCoffee(coffee.CoffeeAmount);
-    AddMilk(coffee.MilkAmount);
-    AddSugar(coffee.SugarAmount);
+    PrepareCoffee(coffee.CoffeeAmountMillilitres);
+    AddMilk(coffee.MilkAmountMillilitres);
+    AddSugar(coffee.SugarAmountGrams);
 }

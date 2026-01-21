@@ -19,10 +19,10 @@ QHash<int, QByteArray> CoffeeModel::roleNames() const
 {
     return {
         {NameRole, "name"},
-        {CoffeeAmountRole, "coffeeAmount"},
-        {MilkAmountRole, "milkAmount"},
-        {SugarAmountRole, "sugarAmount"},
-        {BrewTimeRole, "brewTime"}
+        {CoffeeAmountRole, "CoffeeAmountMillilitres"},
+        {MilkAmountRole, "MilkAmountMillilitres"},
+        {SugarAmountRole, "SugarAmountGrams"},
+        {BrewTimeRole, "BrewTimeSeconds"}
     };
 }
 
@@ -37,13 +37,13 @@ QVariant CoffeeModel::data(const QModelIndex &index, int role) const
     case NameRole:
         return coffee.Name;
     case CoffeeAmountRole:
-        return coffee.CoffeeAmount;
+        return coffee.CoffeeAmountMillilitres;
     case MilkAmountRole:
-        return coffee.MilkAmount;
+        return coffee.MilkAmountMillilitres;
     case SugarAmountRole:
-        return coffee.SugarAmount;
+        return coffee.SugarAmountGrams;
     case BrewTimeRole:
-        return coffee.brewTime;
+        return coffee.BrewTimeSeconds;
     default:
         return QVariant();
     }

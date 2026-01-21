@@ -42,10 +42,10 @@ QVariantList CoffeeManager::GetCoffeeList() const
     for (const auto &coffee : m_coffees) {
         QVariantMap map;
         map["name"] = coffee.Name;
-        map["coffeeAmount"] = coffee.CoffeeAmount;
-        map["milkAmount"] = coffee.MilkAmount;
-        map["sugarAmount"] = coffee.SugarAmount;
-        map["brewTime"] = coffee.brewTime;
+        map["CoffeeAmountMillilitres"] = coffee.CoffeeAmountMillilitres;
+        map["MilkAmountMillilitres"] = coffee.MilkAmountMillilitres;
+        map["SugarAmountGrams"] = coffee.SugarAmountGrams;
+        map["BrewTimeSeconds"] = coffee.BrewTimeSeconds;
         list.append(map);
     }
     return list;

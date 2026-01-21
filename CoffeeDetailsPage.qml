@@ -8,10 +8,10 @@ Page {
     signal brewRequested()
 
     property string coffeeName: ""
-    property int coffeeAmount: 0
-    property int milkAmount: 0
-    property int sugarAmount: 0
-    property int brewTime: 0
+    property int coffeeAmountMillilitres: 0
+    property int milkAmountMillilitres: 0
+    property int sugarAmountGrams: 0
+    property int brewTimeSeconds: 0
 
     background:Rectangle
     {
@@ -39,25 +39,25 @@ Page {
 
         Text
         {
-            text: "Coffee: " + coffeeAmount + "ml"
+            text: "Coffee: " + coffeeAmountMillilitres + " ml"
             font.pixelSize: 18
         }
 
         Text
         {
-            text: "Milk: " + milkAmount + "ml"
+            text: "Milk: " + milkAmountMillilitres + " ml"
             font.pixelSize: 18
         }
 
         Text
         {
-            text: "Sugar: " + sugarAmount + "g"
+            text: "Sugar: " + sugarAmountGrams + " g"
             font.pixelSize: 18
         }
 
         Text
         {
-            text: "Brew Time: " + brewTime + " seconds"
+            text: "Brew Time: " + brewTimeSeconds + " seconds"
             font.pixelSize: 18
         }
 

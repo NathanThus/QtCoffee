@@ -6,10 +6,10 @@
 struct CoffeeItem
 {
     QString Name;
-    int CoffeeAmount;
-    int MilkAmount;
-    int SugarAmount;
-    int brewTime;
+    int CoffeeAmountMillilitres;
+    int MilkAmountMillilitres;
+    int SugarAmountGrams;
+    int BrewTimeSeconds;
 };
 
 #endif // COFFEEITEM_H
