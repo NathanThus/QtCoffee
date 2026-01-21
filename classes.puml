@@ -1,0 +1,67 @@
+@startuml QtCoffee Classes
+title QtCoffee Classes
+
+class QAbstractListModel 
+class QObject
+class BrewController
+{
+    + BrewController()
+    + Brew(const CoffeeItem item) : void
+    - PrepareCoffee(int quantity) : void
+    - AddMilk(int quantity) : void
+    - AddSugar(int quantity) : void
+}
+
+note right of BrewController : This is mainly \n Pseudo code
+
+struct CoffeeItem
+{
+    + Qstring Name
+    + int CoffeeAmountMillilitres
+    + int MilkAmountMillilitres
+    + int SugarAmountGrams
+    + int BrewTimeSeconds
+}
+
+class CoffeeManager
+{
+    + CoffeeModel* coffeeModel
+    + brewByName(const Qstring &name)
+    - QList<CoffeeItem> m_coffees;
+    - CoffeeModel m_coffeeModel;
+    - BrewController m_brewController;
+
+    - QVariantList GetCoffeeList() const;
+    - void Initialize();
+}
+
+note left of CoffeeManager : CoffeeModel is a QProperty\n brewByName is Q_Invokable
+
+class CoffeeModel
+{
+    + CoffeeModel(QObject *parent)
+    + setCoffees(const QList<CoffeeItem> &coffees) : void
+    + rowCount(const QModelIndex &) const override : int
+    + data(const QModelIndex &index, int role) const override : QVariant
+    # roleNames() const override : QHash<int, QByteArray>
+    - QList<CoffeeItem> m_coffees
+}
+
+enum Roles
+{
+    NameRole,
+    CoffeeAmountRole,
+    MilkAmountRole,
+    SugarAmountRole,
+    BrewTimeRole
+}
+
+CoffeeManager -up-|> QObject
+CoffeeModel -up-|> QAbstractListModel
+CoffeeManager -> CoffeeItem : 1..*
+CoffeeManager --> CoffeeModel : 1..1
+CoffeeManager -> BrewController : 1..1
+CoffeeModel --> Roles
+CoffeeModel -> CoffeeItem : 1..*
+
+@enduml

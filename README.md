@@ -22,6 +22,10 @@ Continous progressbar with data from CoffeeItem.
 ![alt text](<Images/Screenshot 2026-01-20 234933.png>)
 Final screen linking back to the main page after a delay.
 
+## UML
+
+![alt text](<out/classes/QtCoffee Classes.png>)
+
 ## Note
 
 This project is purely intended for the purposes of learning about QT, and progressing my skills therein.
