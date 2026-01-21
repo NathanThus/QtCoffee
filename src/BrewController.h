@@ -3,17 +3,13 @@
 
 #include "CoffeeItem.h"
 
-// Mostly just a demo class.
+// Mostly just a Pseudo class.
 
 class BrewController
 {
 public:
     BrewController();
-    bool Brew(const CoffeeItem coffee);
-private:
-    bool PrepareCoffee(int quantity);
-    bool AddMilk(int quantity);
-    bool AddSugar(int quantity);
+    void Brew(const CoffeeItem coffee); // Pseudocode
 };
 
 #endif // BREWCONTROLLER_H

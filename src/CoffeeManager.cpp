@@ -20,8 +20,20 @@ CoffeeManager::CoffeeManager(QObject *parent)
     m_coffeeModel.setCoffees(m_coffees);
 }
 
-void CoffeeManager::Brew(int index)
+void CoffeeManager::brewByName(const QString &name)
 {
+    for (const auto &coffee : std::as_const(m_coffees)) {
+        if (coffee.Name == name) {
+            Brew(coffee);
+            return;
+        }
+    }
+    qWarning() << "Coffee not found:" << name;
+}
+
+void CoffeeManager::Brew(CoffeeItem coffee)
+{
+    m_brewController.Brew(coffee);
 }
 
 QVariantList CoffeeManager::GetCoffeeList() const
